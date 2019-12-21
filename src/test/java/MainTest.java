@@ -3,22 +3,78 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class MainTest {
-    private WebDriver driver;
+    public static ThreadLocal<EventFiringWebDriver> threadLocal = new ThreadLocal<>();
+    private EventFiringWebDriver driver;
+    private WebDriverWait wait;
+
+    // listener
+    public static class Listener extends AbstractWebDriverEventListener {
+        @Override
+        public void beforeFindBy(By by, WebElement element, WebDriver driver) {
+            System.out.println("TRY TO FIND - " + by); // по какому локатору выполняется поиск, выводится сам локатор
+        }
+
+        @Override
+        public void afterFindBy(By by, WebElement element, WebDriver driver) {
+            System.out.println("FOUND - " + by); // поиск отработал и элемент найден
+        }
+
+        @Override
+        public void onException(Throwable throwable, WebDriver driver) {
+            System.out.println("NOT FOUND - " + throwable); // когда элемент не найден, высыраем исключение
+        }
+    }
 
     @Before
     public void startBrowser() {
-        driver = new ChromeDriver();
-    }
+        if (threadLocal.get() != null) {
+            driver = threadLocal.get();
+            wait = new WebDriverWait(driver, 15);
+            return;
+        }
 
-    @Test
-    public void test1() {
-        driver.get("http://google.com");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        driver = new EventFiringWebDriver(new ChromeDriver()); // завернуть проинициализированный драйвер внутрь ивента
+        driver.register(new Listener());
+        threadLocal.set(driver);
+        wait = new WebDriverWait(driver, 15);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            driver.quit();
+            driver = null;
+        }));
     }
 
     @After
     public void finishBrowser() {
         driver.quit();
+    }
+
+    @Test
+    public void test1() {
+        System.out.println("START CLASS - 1 - METHOD - 1");
+        driver.get("https://translate.google.com");
+
+        WebElement element = driver.findElement(By.xpath(".//textarea[@id = 'source']"));
+        element.sendKeys("testing");
+        wait.until(visibilityOfElementLocated(By.xpath(".//div[@class = 'gt-cd gt-cd-mmd']")));
+        System.out.println("FINISH CLASS - 1 - METHOD - 1\n");
+    }
+
+    @Test
+    public void test2() {
+        System.out.println("START CLASS - 1 - METHOD - 2");
+        driver.get("https://translate.google.com");
+
+        WebElement element = driver.findElement(By.xpath(".//textarea[@id = 'source']"));
+        element.sendKeys("testing");
+        wait.until(visibilityOfElementLocated(By.xpath(".//div[@class = 'xxx']"))); // invalid locator
+        System.out.println("FINISH CLASS - 1 - METHOD - 2\n");
     }
 }
