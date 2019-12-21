@@ -27,7 +27,7 @@ public class MainTest {
 
         @Override
         public void onException(Throwable throwable, WebDriver driver) {
-            System.out.println("NOT FOUND - " + throwable); // когда элемент не найден, высыраем исключение
+            System.out.println("NOT FOUND - " + throwable); // когда элемент не найден, высрет исключение
         }
     }
 
@@ -49,11 +49,6 @@ public class MainTest {
             driver.quit();
             driver = null;
         }));
-    }
-
-    @After
-    public void finishBrowser() {
-        driver.quit();
     }
 
     @Test
