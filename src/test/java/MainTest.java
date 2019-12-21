@@ -38,7 +38,8 @@ public class MainTest {
             return;
         }
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver"); // driver for Mac
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/mac/chromedriver"); // driver for Mac OS
+//        System.setProperty("webdriver.chrome.driver", "src/main/resources/linux/chromedriver"); // driver for Linux OS
         driver = new EventFiringWebDriver(new ChromeDriver());
         driver.register(new Listener());
         threadLocal.set(driver);
