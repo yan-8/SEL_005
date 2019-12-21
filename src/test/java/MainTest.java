@@ -13,21 +13,20 @@ public class MainTest {
     private EventFiringWebDriver driver;
     private WebDriverWait wait;
 
-    // listener
     public static class Listener extends AbstractWebDriverEventListener {
         @Override
         public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-            System.out.println("TRY TO FIND - " + by); // по какому локатору выполняется поиск, выводится сам локатор
+            System.out.println("TRY TO FIND - " + by);
         }
 
         @Override
         public void afterFindBy(By by, WebElement element, WebDriver driver) {
-            System.out.println("FOUND - " + by); // поиск отработал и элемент найден
+            System.out.println("FOUND - " + by);
         }
 
         @Override
         public void onException(Throwable throwable, WebDriver driver) {
-            System.out.println("NOT FOUND - " + throwable); // когда элемент не найден, высрет исключение
+            System.out.println("NOT FOUND - " + throwable);
         }
     }
 
@@ -39,8 +38,8 @@ public class MainTest {
             return;
         }
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        driver = new EventFiringWebDriver(new ChromeDriver()); // завернуть проинициализированный драйвер внутрь ивента
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver"); // driver for Mac
+        driver = new EventFiringWebDriver(new ChromeDriver());
         driver.register(new Listener());
         threadLocal.set(driver);
         wait = new WebDriverWait(driver, 15);
