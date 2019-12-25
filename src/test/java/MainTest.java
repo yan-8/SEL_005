@@ -1,3 +1,4 @@
+import com.google.common.io.Files;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
@@ -5,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.File;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class MainTest {
@@ -26,6 +29,17 @@ public class MainTest {
         @Override
         public void onException(Throwable throwable, WebDriver driver) {
             System.out.println("NOT FOUND - " + throwable);
+
+            File temp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File screen = new File("seleniumScreenshot_" + System.currentTimeMillis() + ".jpg");
+
+            try {
+                Files.copy(temp, screen);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            System.out.println(screen + "\n");
         }
     }
 
@@ -57,7 +71,7 @@ public class MainTest {
 
         WebElement element = driver.findElement(By.xpath(".//textarea[@id = 'source']"));
         element.sendKeys("testing");
-        wait.until(visibilityOfElementLocated(By.xpath(".//div[@class = 'gt-cd gt-cd-mmd']")));
+        wait.until(visibilityOfElementLocated(By.xpath(".//div[@class = 'gt-cd gt-cd-mmd']"))); // valid locator
         System.out.println("FINISH CLASS - 1 - METHOD - 1\n");
     }
 
