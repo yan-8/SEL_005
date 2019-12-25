@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="125e4577-d54e-4782-ad34-20b37566692b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -44,12 +43,12 @@
       <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="43" lean-forward="false" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+            <state relative-caret-position="456">
+              <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#985#986#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
+                <element signature="e#1013#1014#0" expanded="true" />
+                <element signature="e#1072#1073#0" expanded="true" />
                 <element signature="method#startBrowser#0;class#MainTest#0" expanded="false" />
               </folding>
             </state>
@@ -77,8 +76,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/test/java/MainTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/MainTest.java" />
       </list>
     </option>
   </component>
@@ -334,7 +333,7 @@
       <workItem from="1576860601190" duration="330000" />
       <workItem from="1576866904486" duration="2372000" />
       <workItem from="1576930641730" duration="4603000" />
-      <workItem from="1577296678828" duration="1762000" />
+      <workItem from="1577296678828" duration="1940000" />
     </task>
     <servers />
   </component>
@@ -371,7 +370,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9067000" />
+    <option name="totallyTimeSpent" value="9245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="896" extended-state="6" />
@@ -438,8 +437,8 @@
           <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
             <element signature="method#startBrowser#0;class#MainTest#0" expanded="false" />
           </folding>
         </state>
@@ -499,12 +498,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="43" lean-forward="false" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+        <state relative-caret-position="456">
+          <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
             <element signature="method#startBrowser#0;class#MainTest#0" expanded="false" />
           </folding>
         </state>

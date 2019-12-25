@@ -7,6 +7,7 @@ import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
+import java.io.IOException;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -35,8 +36,8 @@ public class MainTest {
 
             try {
                 Files.copy(temp, screen);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
             }
 
             System.out.println(screen + "\n");
